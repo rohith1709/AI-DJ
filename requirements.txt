@@ -1,0 +1,10 @@
+Flask==3.0.0
+qrcode[pil]
+google-api-python-client
+numpy
+librosa==0.10.0
+soundfile
+spleeter==2.4.0
+pyrubberband
+pydub
+yt-dlp
