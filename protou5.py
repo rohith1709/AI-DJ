@@ -8,8 +8,6 @@ import concurrent.futures
 from collections import Counter
 from urllib.parse import unquote
 
-from fastapi import FastAPI
-
 import qrcode
 from flask import Flask, request, render_template_string, send_from_directory
 from googleapiclient.discovery import build
@@ -43,7 +41,7 @@ INPUT_WINDOW = 90     # How long a QR session lasts
 CYCLE_DELAY = 10      # Delay between sessions
 
 # Initialize Flask (using an older version if needed)
-app = FastAPI()
+app = Flask(__name__)
 youtube = build("youtube", "v3", developerKey=API_KEY)
 
 # Global variables to manage session state
@@ -575,11 +573,6 @@ def serve_qr(token):
 @app.route('/')
 def home():
     return "Welcome to the Integrated Music Mixing Pipeline!"
-
-@app.get("/run")
-def run_script():
-    result = "Your script executed successfully!"
-    return {"message": result}
 
 #############################################
 # MAIN EXECUTION
